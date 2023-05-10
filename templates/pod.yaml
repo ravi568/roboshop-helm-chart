@@ -10,16 +10,16 @@ spec:
     - name: {{ .Values.component }}
       image: 271551280472.dkr.ecr.us-east-1.amazonaws.com/{{ .Values.component }}:{{ .Values.appversion }}
       volumeMounts:
-        - mountPath: /params
-          name: params
+      - mountPath: /params
+        name: params
   initContainers:
     - name: aws-ssm-param-store
       image: 271551280472.dkr.ecr.us-east-1.amazonaws.com/aws-ssm-param-store:2.0.0
       args: [{{ .Values.params }}]
       volumeMounts:
-        - mountPath: /params
-          name: params
+      - mountPath: /params
+        name: params
   volumes:
-    - name: params
-      emptyDir:
+  - name: params
+    emptyDir:
         sizeLimit: 100Mi
