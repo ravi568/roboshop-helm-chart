@@ -3,13 +3,13 @@ kind: Service
 metadata:
   name: {{ .Values.component }}
   labels:
-    component: {{ .Values.component }}
+    {{- include "roboshop.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: {{ .Values.service.port }}
+      targetPort: http
       protocol: TCP
       name: http
   selector:
-    component: {{ .Values.component }}
+    {{- include "roboshop.selectorLabels" . | nindent 4 }}
