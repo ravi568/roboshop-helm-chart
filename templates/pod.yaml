@@ -16,6 +16,7 @@ spec:
     - name: aws-ssm-param-store
       image: 271551280472.dkr.ecr.us-east-1.amazonaws.com/aws-ssm-param-store:2.0.1
       args: [ "{{ .Values.params }}" ]
+
       volumeMounts:
       - mountPath: /params
         name: params
