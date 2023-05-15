@@ -15,7 +15,7 @@ spec:
           args: ["{{ .Values.schemaLoadJob.type }}","{{ .Values.component }}"]
           env:
             - name: env
-              value: { { .Values.component } }
+              value: { { .Values.env } }
       restartPolicy: Never
   backoffLimit: 1
 {{- end }}
