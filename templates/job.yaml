@@ -5,6 +5,8 @@ metadata:
   name: {{ .Values.component }}-schema-loader
   labels:
     component: {{ .Values.component }}
+  annotations:
+    "helm.sh/hook": "pre-install"
 spec:
   template:
     spec:
@@ -12,6 +14,7 @@ spec:
       containers:
         - name: schema-loader
           image: 271551280472.dkr.ecr.us-east-1.amazonaws.com/schema-loader:2.0.1
+          command: [ "bash","-x", "/run.sh" ]
           args: [ "{{ .Values.schemaLoadJob.type }}" , "{{ .Values.component }}" ]
           env:
             - name: env
