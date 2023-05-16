@@ -13,7 +13,7 @@ spec:
       serviceAccountName: {{ .Values.component }}
       containers:
         - name: schema-loader
-          image: 271551280472.dkr.ecr.us-east-1.amazonaws.com/schema-loader:2.0.1
+          image: 271551280472.dkr.ecr.us-east-1.amazonaws.com/schema-loader:2.0.2
           command: [ "bash","-x", "/run.sh" ]
           args: [ "{{ .Values.schemaLoadJob.type }}" , "{{ .Values.component }}" ]
           env:
